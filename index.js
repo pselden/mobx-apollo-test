@@ -1,4 +1,4 @@
-const { autorun, extendObservable, act, toJS } = require('mobx');
+const { autorun, extendObservable, computed, act, toJS } = require('mobx');
 const { ApolloClient, createNetworkInterface } = require('apollo-client');
 const { query } = require('mobx-apollo');
 const gql = require('graphql-tag');
@@ -15,6 +15,7 @@ const allPosts = gql`
   {
     allPosts {
       id
+      title
     }
   }
 `;
@@ -31,6 +32,17 @@ const singlePost = gql`
 class PostsStore {
   constructor() {
     extendObservable(this, { postId: 'cj7c8rb0x1ndu01842w34gxby' });
+    extendObservable(this, {
+      get postNames() {
+        const posts = this.allPosts.data || [];
+        try {
+          return posts.map(p => p.title);
+        } catch (e) {
+          console.log('Error getting post titles:', e.message);
+          return [];
+        }
+      }
+    });
 
     query(this, 'allPosts', {
       client,
@@ -56,5 +68,6 @@ class PostsStore {
 }
 
 const postStore = new PostsStore();
-autorun(() => console.log(toJS(postStore.allPosts.data)));
-autorun(() => console.log(toJS(postStore.currentPost.data)));
+autorun(() => console.log('all posts:', toJS(postStore.allPosts.data)));
+autorun(() => console.log('current post', toJS(postStore.currentPost.data)));
+autorun(() => console.log('post names', postStore.postNames));
