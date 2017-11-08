@@ -39,7 +39,7 @@ class PostsStore {
 
     query(this, 'currentPost', {
       client,
-      query: allPosts,
+      query: singlePost,
       variables: this.currentPostVariables
     });
   }
@@ -58,4 +58,3 @@ class PostsStore {
 const postStore = new PostsStore();
 autorun(() => console.log(toJS(postStore.allPosts.data)));
 autorun(() => console.log(toJS(postStore.currentPost.data)));
-setInterval(() => console.log('tick'), 10000);
