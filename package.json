@@ -7,7 +7,7 @@
     "apollo-client": "^1.9.2",
     "graphql-tag": "^2.4.2",
     "mobx": "^3.2.2",
-    "mobx-apollo": "^0.0.16",
+    "mobx-apollo": "^0.0.18",
     "mobx-utils": "^3.1.1",
     "node-fetch": "^1.7.3"
   },

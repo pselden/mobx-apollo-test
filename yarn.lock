@@ -78,9 +78,9 @@ loose-envify@^1.1.0:
   dependencies:
     js-tokens "^3.0.0"
 
-mobx-apollo@^0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/mobx-apollo/-/mobx-apollo-0.0.16.tgz#ddd521412ec565fa2130145a3d2915ecb87a408f"
+mobx-apollo@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/mobx-apollo/-/mobx-apollo-0.0.18.tgz#00edf93a8fa5d627625a74980d415c1171ab760a"
 
 mobx-utils@^3.1.1:
   version "3.1.1"
