@@ -40,13 +40,9 @@ class PostsStore {
           query: allPosts,
           fetchPolicy: 'network-only'
         });
-        const posts = query.data.allPosts || [];
-        posts.unshift(this.firstPost);
+
+        const posts = query.data || [];
         return posts;
-      },
-      firstPost: {
-        id: '0',
-        title: 'Empty Post'
       }
     });
   }
@@ -54,5 +50,5 @@ class PostsStore {
 
 const postsStore = new PostsStore();
 setTimeout(function() {
-  autorun(() => console.log('all posts', toJS(postsStore.allPosts)));
+  autorun(() => console.log('all posts', postsStore.allPosts));
 }, 2000);
